@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1023</width>
+    <height>709</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="text">
+      <string>QtConcurrent</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>开启线程</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" rowspan="2">
+    <widget class="QFrame" name="frame_4">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5"/>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="radioButton_5">
+        <property name="text">
+         <string>人脸识别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="radioButton">
+        <property name="text">
+         <string>猫狗识别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="radioButton_4">
+        <property name="text">
+         <string>数字识别</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="text">
+         <string>x'x'x</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="radioButton_3">
+        <property name="text">
+         <string>小黄人</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="5">
+       <widget class="DragUrlModule" name="widget_2" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="DragUrlWidget" name="widget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="text">
+      <string>videoCaptureToLabel</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DragUrlWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">DragUrlWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DragUrlModule</class>
+   <extends>QWidget</extends>
+   <header location="global">DragUrlModule.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

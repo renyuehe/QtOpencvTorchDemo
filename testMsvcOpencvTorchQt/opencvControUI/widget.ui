@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1" rowspan="2">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout_2"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="3">
+    <widget class="QListWidget" name="listWidget">
+     <property name="maximumSize">
+      <size>
+       <width>180</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>channelSpliteUI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>channelRGBUI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>videoCaptureUI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>binaryThresholdUI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>mathAddweightedUI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>warpAffineUI</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
