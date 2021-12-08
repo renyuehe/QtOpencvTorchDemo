@@ -1,8 +1,8 @@
 TEMPLATE  = subdirs
 
 SUBDIRS =   \
-#    mtcnn \
-#        opencvControUI \
-	testOpencvTorch \
+#        mtcnn \
+        opencvControUI \
+#	testOpencvTorch \
 #        uiFrame \
 #        components

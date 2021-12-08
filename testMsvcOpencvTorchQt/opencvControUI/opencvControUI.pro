@@ -22,7 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 include(../lib/lib.pri)
 include(../refer/refer.pri)
 include(../common/common.pri)
-include(../components/components.pri)
+#include(../components/components.pri)
 include(ui/ui.pri)
 
 SOURCES += \

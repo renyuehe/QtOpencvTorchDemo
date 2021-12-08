@@ -1,14 +1,14 @@
 ################################ opencv ################################
 INCLUDEPATH += \
-    D:\lib\opencv\build\include\opencv2\
-    D:\lib\opencv\build\include\opencv\
-    D:\lib\opencv\build\include
+    D:\lib\opencv_454\build\include\opencv2\
+    D:\lib\opencv_454\build\include\opencv\
+    D:\lib\opencv_454\build\include
 
 CONFIG(debug,debug|release){
-LIBS += D:\lib\opencv\build\x64\vc15\lib\opencv_world452d.lib
+LIBS += D:\lib\opencv_454\build\x64\vc15\lib\opencv_world454d.lib
 }
 else{
-LIBS += D:\lib\opencv\build\x64\vc15\lib\opencv_world452.lib
+LIBS += D:\lib\opencv_454\build\x64\vc15\lib\opencv_world454.lib
 }
 
 ################################ libtorch ################################
