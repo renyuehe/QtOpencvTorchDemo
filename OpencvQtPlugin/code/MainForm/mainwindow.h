@@ -27,10 +27,9 @@ public:
 
     void initUI();
     void initMenuBar();
+    void initSignalSlot();
 
     void loadAllPlugin();
-
-    void initWorkSpace();
 
 private:
     /**

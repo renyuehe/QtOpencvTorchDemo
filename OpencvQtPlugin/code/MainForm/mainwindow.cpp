@@ -5,7 +5,6 @@
 #include "ComPluginInterface.h"
 #include "Communication.h"
 
-//#include "OpencvOper.h"
 #include "Cv2Qt.h"
 
 #include "QFileDialog"
@@ -18,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initUI();
     initMenuBar();
+    initSignalSlot();
     loadAllPlugin();
 }
 
@@ -25,12 +25,14 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 void MainWindow::initUI(){
    ui->labelLeft->setScaledContents(true);
    ui->labelRight->setScaledContents(true);
 }
 
 void MainWindow::initMenuBar(){
+    //打开图片
     connect(ui->actionOpen, &QAction::triggered, this, [=](){
         QString fileName = QFileDialog::getOpenFileName(nullptr,
                                                         ("文件对话框！"),
@@ -38,24 +40,39 @@ void MainWindow::initMenuBar(){
                                                         ("图片文件(*png *jpg);;"));
         if(fileName.endsWith(QString("jpg")) || fileName.endsWith(QString("png")))
         {
-            cv::Mat image=cv::imread(fileName.toStdString(),1);//一定要使用绝对路径，其他可以回报错
-
-            QImage imageImg = Cv2Qt::cvMat_to_QImage(image);
-            SRC_IMG = QPixmap::fromImage(imageImg);
-
-
-            QSize size(QSize(ui->labelLeft->width(), int(double((SRC_IMG.height())/double(SRC_IMG.width()))*ui->labelLeft->height())));
-            qDebug() << size;
-            QPixmap TempSrcPixmap = Communication::GetInstance()->mSrcPixmap.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            BASE_MAT = cv::imread(fileName.toStdString(),1);//一定要使用绝对路径，其他可以回报错
+            SRC_MAT = cv::imread(fileName.toStdString(),1);//一定要使用绝对路径，其他可以回报错
+            if(ui->actionis_continuous_processing->isChecked())
+                DST_MAT = SRC_MAT;
+            cv::Mat dst;
+            cv::resize(SRC_MAT, dst, cv::Size(0, 0), 0.5, 0.5);
+            QPixmap TempSrcPixmap = QPixmap::fromImage(Cv2Qt::cvMat_to_QImage(dst));
+            TempSrcPixmap.scaled(TempSrcPixmap.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
             ui->labelLeft->setPixmap(TempSrcPixmap);
-
-//            ui->labelRight->setPixmap(mSrcPixmap);
         }
     });
 
-    connect(ui->actiontest, &QAction::triggered,this,[=](){
-        qDebug() << &SRC_IMG;
-        qDebug() << &SRC_IMG;
+    //对图片 连续处理
+    connect(ui->actionis_continuous_processing, &QAction::triggered, this, [=](bool checked){
+        if(checked){
+            DST_MAT = SRC_MAT;
+        }
+        else {
+            SRC_MAT = BASE_MAT;
+            DST_MAT = cv::Mat();
+        }
+    });
+}
+
+void MainWindow::initSignalSlot(){
+    //更新dst图片
+    connect(Communication::GetInstance(), &Communication::signalUpdateDstimg, this, [=](){
+        qDebug() << "aaaaaaaaaaaaaa";
+        cv::Mat tempDst;
+        cv::resize(DST_MAT, tempDst, cv::Size(0, 0), 0.5, 0.5);
+        QPixmap TempSrcPixmap = QPixmap::fromImage(Cv2Qt::cvMat_to_QImage(tempDst));
+        TempSrcPixmap.scaled(TempSrcPixmap.size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        ui->labelRight->setPixmap(TempSrcPixmap);
     });
 }
 

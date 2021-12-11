@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPixmap>
+#include <QRadioButton>
 
 
 namespace Ui {
@@ -18,8 +19,26 @@ public:
     ~FilterForm();
 
 
+    void initUI();
+
 private slots:
-    void on_pushButton_clicked();
+
+    void on_comboBox_weight_activated(const QString &arg1);
+
+    void on_comboBox_height_activated(const QString &arg1);
+
+    void on_comboBox_height_GaussianBlur_activated(const QString &arg1);
+
+    void on_comboBox_weight_GaussianBlur_activated(const QString &arg1);
+
+    void on_comboBox_wh_medianBlur_activated(const QString &arg1);
+
+
+    void on_pushButton_bilateralFilter_clicked();
+
+    void on_comboBox_height_boxFilter_activated(const QString &arg1);
+
+    void on_comboBox_weight_boxFilter_activated(const QString &arg1);
 
 private:
     Ui::FilterForm *ui;

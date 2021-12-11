@@ -3,9 +3,14 @@
 
 #include <QVariant>
 #include <QDebug>
+#include <QMessageBox>
+#include <QPixmap>
 
 #include <QtCore/qglobal.h>
-#include <QPixmap>
+
+#include "opencv2/highgui.hpp"
+#include "opencv2/core.hpp"
+#include "opencv2/world.hpp"
 
 #if defined(COMMON_LIBRARY)
 #  define D_COMMONSHARED_EXPORT Q_DECL_EXPORT
@@ -22,28 +27,35 @@ private:
 
 public:
     static Communication *GetInstance();
-    QPixmap mSrcPixmap;
-    QPixmap mDstPixmap;
 
-public:
-    Communication();
+    cv::Mat mBaseMat;//绝对原图
+    cv::Mat mSrcMat;//相对原图(连续处理时会被破坏)
+    cv::Mat mDstMat;//相对目标图(连续处理时就是mSrcMat)
 
-public:
-    /**
-     * @brief SendMsg 消息发布接口
-     * @param code
-     * @param msg
-     */
-    void SendMsg(int code, const QVariant& msg);
+    bool canBegin(){
+        if(Communication::GetInstance()->mSrcMat.empty()){
+            QMessageBox::warning(nullptr, QString("warning"), QString("no src img"));
+            return false;
+        }
+        else
+            return true;
+    }
+
+
+private:
+    Communication();    
 
 signals:
+
     /**
-     * @brief SendMsg 消息发布信号
-     * @param code
-     * @param msg
+     * @brief 更新主框架 dstPixmap 信号
      */
-    void SendMsgToManager(int code,const QVariant& msg);
+    void signalUpdateDstimg();
 };
+
+#define COM_BEGIN \
+    if(!Communication::GetInstance()->canBegin()) \
+    return;
 
 #define SEND_MSG(code,msg)\
 {\
@@ -51,7 +63,9 @@ signals:
     instance->SendMsg(code,msg);\
 };
 
-#define SRC_IMG  Communication::GetInstance()->mSrcPixmap
-#define DST_IMG  Communication::GetInstance()->mDstPixmap
+#define BASE_MAT  Communication::GetInstance()->mBaseMat
+#define SRC_MAT  Communication::GetInstance()->mSrcMat
+#define DST_MAT  Communication::GetInstance()->mDstMat
+#define UPDATE_DST (emit Communication::GetInstance()->signalUpdateDstimg());
 
 #endif // COMMUNICATION_H

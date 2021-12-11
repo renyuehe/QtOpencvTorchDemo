@@ -9,19 +9,7 @@ Communication *Communication::GetInstance()
     return m_ComInstance;
 }
 
+
 Communication::Communication()
 {
-}
-
-/**
- * @brief SendMsg 消息发布接口
- * @param code
- * @param msg
- */
-void Communication::SendMsg(int code, const QVariant& msg)
-{
-    if(code == 10000)
-        m_CurrentPluginName = msg.toString();
-
-    emit SendMsgToManager(code,msg);
 }

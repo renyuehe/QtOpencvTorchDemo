@@ -10,6 +10,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 include($${PWD}/../comPlugin.pri)
 include($${PWD}/../../thirdLib/thirdLib.pri)
+include($${PWD}/../../refer/refer.pri)
 
 SOURCES += \
     FilterForm.cpp \

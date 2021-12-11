@@ -5,6 +5,9 @@ TARGET = Communication
 
 
 include(../../common.pri)
+include(../../thirdLib/thirdLib.pri)
+include(../../refer/refer.pri)
+
 
 DEFINES += COMMON_LIBRARY
 

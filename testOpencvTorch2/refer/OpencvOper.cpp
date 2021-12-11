@@ -321,9 +321,11 @@ void OpencvOper::graphFilterOper()
     /************高通**************/
     //拉普拉斯
     cv::Laplacian(img, dst, -1);
+
     //Sobel x and y
     cv::Sobel(img, dst, -1, 1, 0);
     cv::Sobel(img, dst, -1, 0, 1);
+
     //Scharr x and y
     cv::Scharr(img, dst, -1, 1, 0);
     cv::Scharr(img, dst, -1, 0, 1);
